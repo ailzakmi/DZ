@@ -1,7 +1,12 @@
 def main():
-    a = input("Введите число: ").split()
-    x = int(a[0]) ** int(a[1])
-    print("Ваше число: ", x)
+    queue = Queue()
+    for i in range(5):
+        queue.push(i)
+    queue.print()
+    queue.insert(2, 99)
+
+    print('______')
+    queue.print()
 
 if __name__ == "__main__":
     main()
@@ -102,11 +107,3 @@ class Queue:
         while ch:
             print(ch.data)
             ch = ch.pref
-queue = Queue()
-for i in range(5):
-    queue.push(i)
-queue.print()
-queue.insert(2,99)
-
-print('______')
-queue.print()
