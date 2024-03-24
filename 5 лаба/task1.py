@@ -1,10 +1,30 @@
-def main():
-    a = input("Введите число: ").split()
-    x = int(a[0]) ** int(a[1])
-    print("Ваше число: ", x)
+class Node:
+    """Вспомогательный класс для узлов списка"""
+    def __init__(self, data):
+        self.data = data # храним информацию
+        self.pref = None # ссылка на предыдущий узел
+class Stack:
+    """Основной класс для стека"""
+    def __init__(self):
+        self.end = None # ссылка на конец стека
+    def pop(self):
+#         возвращение последнего элемента из списка с удалением его из списка
+        val = self.end.data
+        self.end = self.end.pref
+        return val
 
-if __name__ == "__main__":
-    main()
+    def push(self, val):
+#         добавление элемента val в конец списка
+        current_node = Node(val)
+        current_node.pref = self.end
+        self.end = current_node
+
+    def print(self):
+#         вывод на печать содержимого стека
+        ch = self.end
+        while ch:
+            print(ch.data)
+            ch = ch.pref
 
 # Создать класс.
 # Стек на структуре данных односвязный список.
@@ -42,29 +62,3 @@ if __name__ == "__main__":
 #         вывод на печать содержимого стека
 #         """
 #         pass
-
-
-class Node:
-    """Вспомогательный класс для узлов списка"""
-    def __init__(self, data):
-        self.data = data # храним информацию
-        self.pref = None # ссылка на предыдущий узел
-class Stack:
-    """Основной класс для стека"""
-    def __init__(self):
-        self.end = None # ссылка на конец стека
-    def pop(self):
-        val = self.end.data
-        self.end = self.end.pref
-        return val
-
-    def push(self, val):
-        current_node = Node(val)
-        current_node.pref = self.end
-        self.end = current_node
-
-    def print(self):
-        ch = self.end
-        while ch:
-            print(ch.data)
-            ch = ch.pref
